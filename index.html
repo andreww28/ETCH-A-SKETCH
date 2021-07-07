@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>ETCH-A-SKETCH</h1>
+    <div class="main-container">
+        <div class="input-div">
+            <div class="range-div">
+                <label for="range" class="larger-size">Grid-Dimension:</label>
+                <input type="range" min="1" max="100" name="dimension" value="16" id='range' oninput="update_range_input(this.value)" onclick="apply_input_to_grid()">
+                <output>16x16</output>
+            </div>
+
+            <div class="color-div">
+                <label class="larger-size">Color:</label>
+                <label><input type="radio" name="grid-color" value="black" id="black">  Random to Black Color</label>
+                <label><input type="radio" name="grid-color" value="custom" id="custom">  Custom</label>
+                <div class="input-color-div">
+                    <input type="color" name="color" value="#111111" class="color-input">
+                    <button id="add-color-btn" class="button" onclick="add_custom_color()">+</button>
+                </div>
+            </div>
+
+            <div class="button-div">
+                <button onclick="clear_window()" id="clear" class="button">Clear</button>
+                <button onclick="erase_cell()" id="eraser" class="button">Eraser</button>
+                <button onclick="set_default_input()" id="default" class="button">Set to Default</button>
+            </div>
+        </div>
+        <div class="container"></div>
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const range_slider = document.querySelector("#range");
+        const color_selection = document.getElementsByName("grid-color");
+        const custom_color = document.getElementsByName("color");
+        const color_div = document.querySelector(".input-color-div");
+    
+        let hovered_element = [];
+        let erase_cells = false;
+        let array_selected_colors = []
+
+
+        function getCustomColor(){
+            array_selected_colors.splice(0, array_selected_colors.length);
+            color_selection[1].checked = true;
+            for(let i = 0; i < custom_color.length; i++){
+                array_selected_colors.push(custom_color[i].value)
+            }
+            return array_selected_colors[Math.floor(Math.random() * array_selected_colors.length)];
+        }
+
+
+        function add_custom_color(){
+            let color_input = document.createElement("input");
+            color_selection[1].checked = true;
+
+            color_input.setAttribute("type", "color");
+            color_input.setAttribute("value", "#111111");
+            color_input.setAttribute("name", "color");
+            color_input.setAttribute("onchange", "getCustomColor()");
+            color_input.classList.add("color-input");
+            color_div.insertBefore(color_input, color_div.childNodes[0]);
+        }
+
+
+        function apply_input_to_grid(){
+            while(container.firstChild){
+                container.removeChild(container.firstChild);
+            }
+            generate_grid(range_slider.value);
+        }
+
+        
+        function update_range_input(val){
+            document.querySelector('output').value = val + 'x' + val;
+        }
+
+
+        function erase_cell(){
+            if(erase_cells){
+                erase_cells = false;
+            }else{
+                erase_cells = true;
+            }
+        }
+
+
+        function set_default_input(){
+            range_slider.value = 16;
+            clear_window();
+            color_selection[0].checked = true;
+            erase_cells = false;
+        }
+
+
+        function grid_add_id(div, id){
+            div.id = id;
+        }
+
+
+        function clear_window(){
+            const divs = document.querySelectorAll(".container > div");
+            divs.forEach(div => {
+                div.style.backgroundColor = "beige";
+                hovered_element.splice(0, hovered_element.length);
+            })
+        }
+
+
+        function generate_grid(dimension){
+            container.setAttribute("style", `display:grid; grid-template-columns: repeat(${dimension}, 1fr`);
+
+            for(let i = 1; i <= dimension * dimension; i++){
+                let div = document.createElement("div");
+                div.setAttribute("style", "transition: all 0.8s");
+                grid_add_id(div, i );
+                container.appendChild(div);    
+            }
+            grid_events();
+        }
+
+
+        function grid_events(color){
+            const divs = document.querySelectorAll(".container > div");
+            hovered_element.splice(0, hovered_element.length);
+
+            divs.forEach(box => {
+                box.addEventListener("mouseover", () => {
+                    if(color_selection[0].checked && !erase_cells){
+                        if(!hovered_element.includes(box.id)){
+                            hovered_element.push(box.id);
+                        }  
+                        random_color_to_black();
+                    }else if(erase_cells){
+                        box.style.backgroundColor = "rgb(235, 235, 235)";
+                    }else if(color_selection[1].checked){
+                        box.style.backgroundColor = getCustomColor();
+                    }
+                                    
+                });
+            });
+        }
+
+
+        function random_color_to_black(){
+            hovered_element.forEach(hovered => {
+                hovered_length = hovered_element.length;
+                let dark_depth = hovered_length - hovered_element.indexOf(hovered);
+                let black_color = (1 - ((dark_depth - 1)/10)).toFixed(1);
+                document.getElementById(hovered).style.backgroundColor = `rgb(${randomNum(black_color= black_color)},${randomNum(black_color= black_color)},${randomNum(black_color= black_color)})`;
+                
+                if(hovered_length === 12){
+                    hovered_element.shift();
+                }
+            });  
+        }
+
+        function randomNum(black_color){
+            return Math.floor(Math.random() * 255) * black_color;
+        }
+
+        function sketch(){
+            set_default_input();
+            generate_grid(range_slider.value);
+        }
+
+        sketch();
+    </script>
+</body>
+</html>
