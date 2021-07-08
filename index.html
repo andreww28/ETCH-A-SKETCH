@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=Special+Elite&display=swap" rel="stylesheet"> 
     <link href="style.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Etch A Sketch</title>
 </head>
 
 <body>
-    <h1>ETCH-A-SKETCH</h1>
+    <h1>ETCH A SKETCH</h1>
     <div class="main-container">
         <div class="input-div">
             <div class="range-div">
@@ -26,6 +27,7 @@
                     <input type="color" name="color" value="#111111" class="color-input">
                     <button id="add-color-btn" class="button" onclick="add_custom_color()">+</button>
                 </div>
+                <button class="button" onclick="reset_color()" id="reset-color">Reset Color</button>
             </div>
 
             <div class="button-div">
@@ -60,23 +62,33 @@
 
 
         function add_custom_color(){
-            let color_input = document.createElement("input");
+            const add_color_btn = document.getElementById("add-color-btn");
             color_selection[1].checked = true;
 
+            let color_input = document.createElement("input");
             color_input.setAttribute("type", "color");
             color_input.setAttribute("value", "#111111");
             color_input.setAttribute("name", "color");
             color_input.setAttribute("onchange", "getCustomColor()");
             color_input.classList.add("color-input");
-            color_div.insertBefore(color_input, color_div.childNodes[0]);
+            color_div.insertBefore(color_input, add_color_btn);
+        }
+
+        function reset_color(){
+            const colours = document.querySelectorAll(".color-input");
+            for(let i = 1; i < colours.length; i++){
+                color_div.removeChild(colours[i]);
+            }
+            colours[0].value = "#111111";
         }
 
 
-        function apply_input_to_grid(){
+        function apply_input_to_grid(dimension = range_slider.value){
             while(container.firstChild){
                 container.removeChild(container.firstChild);
             }
-            generate_grid(range_slider.value);
+            generate_grid(dimension);
+            console.log(dimension);
         }
 
         
@@ -86,19 +98,25 @@
 
 
         function erase_cell(){
+            const erase_button = document.querySelector('#eraser');
             if(erase_cells){
                 erase_cells = false;
+                erase_button.style.backgroundColor = "rgba(31, 171, 236, 0.5)";
             }else{
                 erase_cells = true;
+                erase_button.style.backgroundColor = "rgba(12, 70, 97, 0.5)";
             }
         }
 
 
         function set_default_input(){
+            document.querySelector('output').value = 16 + 'x' + 16;
             range_slider.value = 16;
-            clear_window();
             color_selection[0].checked = true;
             erase_cells = false;
+            reset_color();
+            clear_window();
+            apply_input_to_grid(16);
         }
 
 
@@ -110,7 +128,7 @@
         function clear_window(){
             const divs = document.querySelectorAll(".container > div");
             divs.forEach(div => {
-                div.style.backgroundColor = "beige";
+                div.style.backgroundColor = 'rgb(235,235,235';
                 hovered_element.splice(0, hovered_element.length);
             })
         }
@@ -170,7 +188,6 @@
 
         function sketch(){
             set_default_input();
-            generate_grid(range_slider.value);
         }
 
         sketch();
