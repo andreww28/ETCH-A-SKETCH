@@ -1,13 +1,13 @@
-<p align="center">
+<p align="left">
   <a href="" rel="noopener">
- <img width=800px height=500px src="https://imgur.com/nMI2xzW" alt="Project Screenshot"></a>
+ <img width="800px" height="500px" src="https://imgur.com/nMI2xzW" alt="Project Screenshot"></a>
 </p>
 
-<h3 align="center">Etch a Sketch</h3>
-
+<h1 align="center">Etch a Sketch</h1>
+<h3 align="center">The Odin Porject - Project 4</h3>
 ---
 
-<p align="center"> Project 4: Etch a Sketch - The Odin Project. This is a simple project that allows you to paint anything you want in abstract form.
+<p align="center">This is a simple project that allows you to paint anything you want in abstract form.
     <br> 
 </p>
 
