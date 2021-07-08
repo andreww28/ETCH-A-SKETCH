@@ -1,6 +1,6 @@
 <p align="left">
   <a href="" rel="noopener">
- <img width=1020 height=800px src="https://i.postimg.cc/L8fssnRJ/Screenshot-23.png" alt="Project Screenshot"></a>
+ <img width=1020 height=600px src="https://i.postimg.cc/L8fssnRJ/Screenshot-23.png" alt="Project Screenshot"></a>
 </p>
 
 <h1 align="center">Etch a Sketch</h1>
