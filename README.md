@@ -1,10 +1,9 @@
 <p align="left">
   <a href="" rel="noopener">
- <img width="800px" height="500px" src="https://imgur.com/nMI2xzW" alt="Project Screenshot"></a>
+ <img width=800 height=600px src="https://i.postimg.cc/L8fssnRJ/Screenshot-23.png" alt="Project Screenshot"></a>
 </p>
 
 <h1 align="center">Etch a Sketch</h1>
-<h3 align="center">The Odin Porject - Project 4</h3>
 ---
 
 <p align="center">This is a simple project that allows you to paint anything you want in abstract form.
@@ -14,16 +13,13 @@
 ## 📝 Table of Contents
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-Write about 1-2 paragraphs describing the purpose of your project.
+This Project is the Project 4 that I made from the [TheOdinProject](https://www.theodinproject.com/paths/). This is a simple web app that allows you to draw or sketch anything that youy want.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 ```
@@ -37,11 +33,12 @@ git clone https://github.com/andreww28/ETCH-A-SKETCH.git
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Javascript](https://www.javascript.com/) - Functionality
-- [CSS](https://expressjs.com/) - Design
-- [HTML](https://vuejs.org/) - Structure
+- [CSS](https://css.com/) - Design
+- [HTML](https://html.org/) - Structure
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@andrew28](https://github.com/andreww28) - Idea & Initial work
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - [Fresh Background Gradient](https://webgradients.com/)
+- [TheOdinProject](https://www.theodinproject.com/paths/)
