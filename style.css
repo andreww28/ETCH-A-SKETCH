@@ -5,16 +5,17 @@
 }
 
 body{
+    background-image: linear-gradient(to top, #a7a6cb 0%, #8989ba 52%, #8989ba 100%);
+    height: 100vh;
     color:rgb(210, 255, 255);
     font-size: 1.125rem;
     font-family: 'Crimson Text', serif;
     padding:1em;
-    background-image: linear-gradient(to top, #a7a6cb 0%, #8989ba 52%, #8989ba 100%);
-    height: 100vh;
-    display: flex;
+    display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
+    gap:1em;
 }
 
 .button{
@@ -38,9 +39,8 @@ h1, output{
 }
 h1{
     font-family: 'Special Elite', cursive;
-    color: rgb(96, 236, 218);
-    margin:0.3em 0 0 0;
-    font-size: 4rem;
+    color: rgb(121, 168, 238);
+    font-size: 5rem;
 }
 
 .larger-size{
@@ -48,7 +48,6 @@ h1{
 }
 
 .main-container{
-    margin:1em auto;
     width:100%;
     max-width:50em;
     padding:2em;
@@ -59,8 +58,6 @@ h1{
     background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
     opacity: 0.7;
     border-radius: 20px;
-    box-shadow: 7px 5px 5px rgb(169, 175, 179);
-
 }
 
 .container{
