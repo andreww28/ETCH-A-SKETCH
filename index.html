@@ -10,35 +10,36 @@
 </head>
 
 <body>
-    <h1>ETCH A SKETCH</h1>
-    <div class="main-container">
-        <div class="input-div">
-            <div class="range-div">
-                <label for="range" class="larger-size">Grid-Dimension:</label>
-                <input type="range" min="1" max="100" name="dimension" value="16" id='range' oninput="update_range_input(this.value)" onclick="apply_input_to_grid()">
-                <output>16x16</output>
-            </div>
-
-            <div class="color-div">
-                <label class="larger-size">Color:</label>
-                <label><input type="radio" name="grid-color" value="black" id="black">  Random to Black Color</label>
-                <label><input type="radio" name="grid-color" value="custom" id="custom">  Custom</label>
-                <div class="input-color-div">
-                    <input type="color" name="color" value="#111111" class="color-input">
-                    <button id="add-color-btn" class="button" onclick="add_custom_color()">+</button>
+    <main>
+        <h1>ETCH A SKETCH</h1>
+        <div class="main-container">
+            <div class="input-div">
+                <div class="range-div">
+                    <label for="range" class="larger-size">Grid-Dimension:</label>
+                    <input type="range" min="1" max="100" name="dimension" value="16" id='range' oninput="update_range_input(this.value)" onclick="apply_input_to_grid()">
+                    <output>16x16</output>
                 </div>
-                <button class="button" onclick="reset_color()" id="reset-color">Reset Color</button>
-            </div>
 
-            <div class="button-div">
-                <button onclick="clear_window()" id="clear" class="button">Clear</button>
-                <button onclick="erase_cell()" id="eraser" class="button">Eraser</button>
-                <button onclick="set_default_input()" id="default" class="button">Set to Default</button>
+                <div class="color-div">
+                    <label class="larger-size">Color:</label>
+                    <label><input type="radio" name="grid-color" value="black" id="black">  Random to Black Color</label>
+                    <label><input type="radio" name="grid-color" value="custom" id="custom">  Custom</label>
+                    <div class="input-color-div">
+                        <input type="color" name="color" value="#111111" class="color-input">
+                        <button id="add-color-btn" class="button" onclick="add_custom_color()">+</button>
+                    </div>
+                    <button class="button" onclick="reset_color()" id="reset-color">Reset Color</button>
+                </div>
+
+                <div class="button-div">
+                    <button onclick="clear_window()" id="clear" class="button">Clear</button>
+                    <button onclick="erase_cell()" id="eraser" class="button">Eraser</button>
+                    <button onclick="set_default_input()" id="default" class="button">Set to Default</button>
+                </div>
             </div>
+            <div class="container"></div>
         </div>
-        <div class="container"></div>
-    </div>
-
+    </main>
     <script>
         const container = document.querySelector(".container");
         const range_slider = document.querySelector("#range");
