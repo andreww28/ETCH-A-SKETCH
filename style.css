@@ -126,12 +126,9 @@ h1{
     width:7em;
 }
 
-
-
 .transparent-cell{
     background-color: rgb(235, 235, 235);
 }
-
 
 @media (max-width: 860px){
     body{
